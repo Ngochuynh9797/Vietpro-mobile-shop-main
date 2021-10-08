@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import store from './redux-setup/store';
+import { Provider } from 'react-redux';
 
 import Header from './shared/components/Layout/Header';
 import Menu from './shared/components/Layout/Menu';
@@ -23,6 +25,9 @@ function App() {
 
  
   return (
+    <Provider store={store}>
+
+    
     <BrowserRouter>
      
         {/*	Header	*/}
@@ -48,10 +53,10 @@ function App() {
 
                 <Switch>
                   <Route path="/categories/:id" component={Category}></Route>
-                  <Route path="/product" component={ProductDetails}></Route>
+                  <Route path="/product-details/:id" component={ProductDetails}></Route>
                   <Route path="/cart" component={Cart}></Route>
                   <Route path="/search" component={Search}></Route>
-                  <Route path="/sucess" component={Success}></Route>
+                  <Route path="/success" component={Success}></Route>
                   <Route exact path="/" component={Home}></Route>
                   <Route component={NotFound}></Route>
 
@@ -73,6 +78,7 @@ function App() {
         {/*	End Footer	*/}
       
     </BrowserRouter>
+    </Provider>
   );
 }
 

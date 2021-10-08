@@ -8,16 +8,17 @@ function Menu() {
 
     useEffect(() => {
      getCategories().then(res => {
-       setCategories(res.data.data.docs)
+       setCategories(res?.data?.data?.docs)
      }).catch(err => console.log(err))
     },[])
+    
     return (
         <nav>
             <div id="menu" className="collapse navbar-collapse">
                 <ul>
                      {
-                        categories.map((category, index) =>  {
-                           return  <li key={index} className="menu-item"><Link to={`/categories/${category._id}`}>{category.name}</Link></li>
+                        categories && categories.map((category) =>  {
+                           return  <li key={category._id} className="menu-item"><Link to={`/categories/${category._id}`}>{category.name}</Link></li>
                         })
                     }
                            

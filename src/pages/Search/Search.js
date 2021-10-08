@@ -1,71 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import ProductItem from '../../shared/components/Product-item'
+import { getProducts} from '../../services/Api';
+import Pagination from '../../shared/components/Pagination';
 
-function Search() {
+
+function Search(props) {
+  const querry= new  URLSearchParams(props.location.search);
+  const keyword= querry.get('q')
+  const page= querry.get('page') ||1
+  const [products, setProducts] = useState(null);
+  const [pages, setPages] = useState({
+   total: 0,
+    limit: 12,
+    currentPage: page
+    
+  })
+  useEffect(()=> {
+      getProducts({
+        params: {
+          name: keyword,
+          limit: 12,
+          page: page
+        }
+      }).then(res => {
+        setProducts(res.data.data.docs)
+        setPages({...pages, ...res.data.data.pages})
+      })
+  }, [keyword, page])
+
     return (
        <>
   <div className="products">
-    <div id="search-result">Kết quả tìm kiếm với sản phẩm <span>iPhone Xs Max 2 Sim - 256GB</span></div>
+    <div id="search-result">Kết quả tìm kiếm với sản phẩm <span>{keyword}</span></div>
     <div className="product-list card-deck">
-      <div className="product-item card text-center">
-        <a href="#"><img src="images/product-1.png" /></a>
-        <h4><a href="#">iPhone Xs Max 2 Sim - 256GB</a></h4>
-        <p>Giá Bán: <span>32.990.000đ</span></p>
-      </div>
-      <div className="product-item card text-center">
-        <a href="#"><img src="images/product-2.png" /></a>
-        <h4><a href="#">iPhone Xs Max 2 Sim - 256GB</a></h4>
-        <p>Giá Bán: <span>32.990.000đ</span></p>
-      </div>
-      <div className="product-item card text-center">
-        <a href="#"><img src="images/product-3.png" /></a>
-        <h4><a href="#">iPhone Xs Max 2 Sim - 256GB</a></h4>
-        <p>Giá Bán: <span>32.990.000đ</span></p>
-      </div>
+
+      {
+        products?.length > 0 ? products?.map((product,index) => {
+          return <ProductItem key={index} item={product} />
+        }) :<h2>Không tim thấy sản phẩm nào</h2>
+      }
+      
     </div>
-    <div className="product-list card-deck">
-      <div className="product-item card text-center">
-        <a href="#"><img src="images/product-4.png" /></a>
-        <h4><a href="#">iPhone Xs Max 2 Sim - 256GB</a></h4>
-        <p>Giá Bán: <span>32.990.000đ</span></p>
-      </div>
-      <div className="product-item card text-center">
-        <a href="#"><img src="images/product-5.png" /></a>
-        <h4><a href="#">iPhone Xs Max 2 Sim - 256GB</a></h4>
-        <p>Giá Bán: <span>32.990.000đ</span></p>
-      </div>
-      <div className="product-item card text-center">
-        <a href="#"><img src="images/product-6.png" /></a>
-        <h4><a href="#">iPhone Xs Max 2 Sim - 256GB</a></h4>
-        <p>Giá Bán: <span>32.990.000đ</span></p>
-      </div>
-    </div>
-    <div className="product-list card-deck">
-      <div className="product-item card text-center">
-        <a href="#"><img src="images/product-7.png" /></a>
-        <h4><a href="#">iPhone Xs Max 2 Sim - 256GB</a></h4>
-        <p>Giá Bán: <span>32.990.000đ</span></p>
-      </div>
-      <div className="product-item card text-center">
-        <a href="#"><img src="images/product-8.png" /></a>
-        <h4><a href="#">iPhone Xs Max 2 Sim - 256GB</a></h4>
-        <p>Giá Bán: <span>32.990.000đ</span></p>
-      </div>
-      <div className="product-item card text-center">
-        <a href="#"><img src="images/product-9.png" /></a>
-        <h4><a href="#">iPhone Xs Max 2 Sim - 256GB</a></h4>
-        <p>Giá Bán: <span>32.990.000đ</span></p>
-      </div>
-    </div>
+  
   </div>
   {/*	End List Product	*/}
   <div id="pagination">
-    <ul className="pagination">
-      <li className="page-item"><a className="page-link" href="#">Trang trước</a></li>
-      <li className="page-item active"><a className="page-link" href="#">1</a></li>
-      <li className="page-item"><a className="page-link" href="#">2</a></li>
-      <li className="page-item"><a className="page-link" href="#">3</a></li>
-      <li className="page-item"><a className="page-link" href="#">Trang sau</a></li>
-    </ul> 
+      <Pagination pages={pages} />
   </div>
 </>
 

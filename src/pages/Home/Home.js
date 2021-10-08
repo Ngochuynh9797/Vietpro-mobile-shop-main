@@ -11,8 +11,8 @@ function Home() {
             params: {
                 limit: 6     
             }
-        }).then(({data}) => {
-            setLatestProduct(data.data.docs);
+        }).then((res) => {
+            setLatestProduct(res?.data?.data?.docs);
             
         })
 
@@ -21,8 +21,8 @@ function Home() {
                 limit: 6,
                 "filter[is_featured]": true,     
             }
-        }).then(({data})=> {
-            setFeaturedProduct(data.data.docs)
+        }).then((res)=> {
+            setFeaturedProduct(res?.data?.data?.docs)
            
         })
     }, [])
@@ -34,8 +34,8 @@ function Home() {
                     <h3>Sản phẩm nổi bật</h3>
                     <div className="product-list card-deck">
                         {
-                            featuredProduct.map((product, index)=> 
-                            <ProductItem key={index} item={product} />
+                            featuredProduct && featuredProduct.map((product)=> 
+                            <ProductItem key={product._id} item={product} />
                            )
                         }
                         
@@ -48,8 +48,8 @@ function Home() {
                     <h3>Sản phẩm mới</h3>
                     <div className="product-list card-deck">
                     {
-                           latestProduct.map((product, index)=> 
-                            <ProductItem key={index} item={product} />
+                           latestProduct && latestProduct.map((product)=> 
+                            <ProductItem key={product._id} item={product} />
                            )
                         }
                        
