@@ -18,66 +18,49 @@ import Category from './pages/Category/Category';
 import NotFound from './pages/NotFound/NotFound';
 
 
-
-
-
 function App() {
 
- 
   return (
     <Provider store={store}>
-
-    
-    <BrowserRouter>
-     
-        {/*	Header	*/}
-
-        <Header />
-        {/*	End Header	*/}
-        {/*	Body	*/}
-
-        <div id="body">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12 col-md-12 col-sm-12">
-                <Menu />
+      <div>
+        <BrowserRouter>
+          {/*	Header	*/}
+          <Header />
+          {/*	End Header	*/}
+          {/*	Body	*/}
+          <div id="body">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <Menu />
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div id="main" class="col-lg-8 col-md-12 col-sm-12">
-                {/*	Slider	*/}
-
-                <Slider />
-                {/*	End Slider	*/}
-                {/*	Feature Product	*/}
-
-                <Switch>
-                  <Route path="/categories/:id" component={Category}></Route>
-                  <Route path="/product-details/:id" component={ProductDetails}></Route>
-                  <Route path="/cart" component={Cart}></Route>
-                  <Route path="/search" component={Search}></Route>
-                  <Route path="/success" component={Success}></Route>
-                  <Route exact path="/" component={Home}></Route>
-                  <Route component={NotFound}></Route>
-
-                </Switch>
-
-                {/*	End Latest Product	*/}
-
-
+              <div class="row">
+                <div id="main" class="col-lg-8 col-md-12 col-sm-12">
+                  {/*	Slider	*/}
+                  <Slider />
+                  {/*	End Slider	*/}
+                  {/*	Feature Product	*/}
+                  <Switch>
+                    <Route path="/categories-:id" component={Category}></Route>
+                    <Route path="/product-details-:id" component={ProductDetails}></Route>
+                    <Route path="/cart" component={Cart}></Route>
+                    <Route path="/search" component={Search}></Route>
+                    <Route path="/success" component={Success}></Route>
+                    <Route exact path="/" component={Home}></Route>
+                    <Route component={NotFound}></Route>
+                  </Switch>
+                  {/*	End Latest Product	*/}
+                </div>
+                <Sidebar />
               </div>
-
-              <Sidebar />
             </div>
           </div>
-        </div>
-        {/*	End Body	*/}
-
-
-        <Footer />
-        {/*	End Footer	*/}
-      
-    </BrowserRouter>
+          {/*	End Body	*/}
+          <Footer />
+          {/*	End Footer	*/}
+        </BrowserRouter>
+      </div>
     </Provider>
   );
 }

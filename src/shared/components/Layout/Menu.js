@@ -17,7 +17,7 @@ function Menu() {
                 <ul>
                      {
                         categories && categories.map((category) =>  {
-                           return  <li key={category._id} className="menu-item"><Link to={`/categories/${category._id}`}>{category.name}</Link></li>
+                           return  <li key={category._id} className="menu-item"><Link to={`/categories-${category._id}`}>{category.name}</Link></li>
                         })
                     }
                 </ul>
