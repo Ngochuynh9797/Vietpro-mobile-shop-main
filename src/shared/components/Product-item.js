@@ -7,8 +7,8 @@ const ProductItem = ({ item }) => {
   
     return (
         <div className='product-item text-center card'>
-             <Link to={`/product-details/${item._id}`}><img src={getImageProducts(item.image)} /></Link>
-            <h4><Link to={`/product-details/${item._id}`}> {item.name} </Link> </h4>
+             <Link to={`/product-details-${item._id}`}><img src={getImageProducts(item.image)} /></Link>
+            <h4><Link to={`/product-details-${item._id}`}> {item.name} </Link> </h4>
             <p> Giá bán: <span> {price} </span></p>
           </div>
           )
