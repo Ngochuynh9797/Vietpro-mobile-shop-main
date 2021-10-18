@@ -3,21 +3,20 @@ import {useHistory} from 'react-router-dom'
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-
-
 function Header() {
-    
     const history = useHistory()
-    const [search, setSearch] = useState('');
+    const [search, setSearch] = useState('')
+
     const handleClick = (e) => {
         e.preventDefault();
         history.push(`/search?q=${search}`)
         setSearch('')
     }
-    console.log(useSelector(state => state))
+
     const totalCart = useSelector(({cart}) => {
         return cart.items.reduce((total, item) => total +item.qty, 0)
     })
+
     return (
         <div id="header">
             <div className="container">
@@ -50,7 +49,6 @@ function Header() {
                 <span className="navbar-toggler-icon" />
             </button>
         </div>
-
     )
 }
 

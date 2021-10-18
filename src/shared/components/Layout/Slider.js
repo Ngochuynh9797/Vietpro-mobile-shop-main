@@ -41,7 +41,6 @@ function Slider() {
                 <span className="carousel-control-next-icon" />
             </a>
         </div>
-
     )
 }
 

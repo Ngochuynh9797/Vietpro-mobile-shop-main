@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {getProduct, getProductComments, createProductComment} from '../../services/Api'
 import {getImageProducts} from '../../utils/index'
 import moment from 'moment'
@@ -70,6 +70,7 @@ function ProductDetails(props) {
         }
         if(type==='buy-now') history.push('/cart')
     }
+
     return (
         <div>
             <div id="product">
@@ -88,7 +89,6 @@ function ProductDetails(props) {
                             <li id="price-number">{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product?.price)}</li>
                             <li id="status">{product?.is_stock?'Còn hàng':'Hết hàng'}</li>
                         </ul>
-
                         {
                             product?.is_stock?(
                                 <div id="add-cart">
@@ -99,15 +99,13 @@ function ProductDetails(props) {
                                 <button className='btn btn-info' onClick={() => addToCart('')}>Thêm vào giỏ hàng</button>
                             </div>
                             ):null
-                        }
-                       
+                        } 
                     </div>
                 </div>
                 <div id="product-body" className="row">
                     <div className="col-lg-12 col-md-12 col-sm-12">
                         <h3>Đánh giá về {product?.name}</h3>
-                       <p>{product?.details} </p>
-                      
+                       <p>{product?.details} </p>  
                     </div>
                 </div>
                 {/*	Comment	*/}
@@ -134,7 +132,6 @@ function ProductDetails(props) {
                 {/*	End Comment	*/}
                 {/*	Comments List	*/}
                 {
-
                comments?.length && (
                 <div id="comments-list" className="row">
                     <div className="col-lg-12 col-md-12 col-sm-12">
@@ -151,8 +148,7 @@ function ProductDetails(props) {
                                 </ul>
                             </div>
                             })
-                        }
-                        
+                        } 
                     </div>
                 </div> )
                  }
@@ -169,7 +165,6 @@ function ProductDetails(props) {
                 </ul>
             </div>
         </div>
-
     )
 }
 

@@ -2,7 +2,6 @@ import React,{useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import { getCategories } from '../../../services/Api'
 
-
 function Menu() {
     const [categories, setCategories] = useState([]);
 
@@ -21,13 +20,9 @@ function Menu() {
                            return  <li key={category._id} className="menu-item"><Link to={`/categories/${category._id}`}>{category.name}</Link></li>
                         })
                     }
-                           
-                  
                 </ul>
             </div>
         </nav>
-
-
     )
 }
 

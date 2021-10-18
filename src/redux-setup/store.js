@@ -8,6 +8,8 @@ const persistConfig= {
     storage: storage,
     keyPrefix:"vietpro",
 }
+
 const store = createStore(persistReducer(persistConfig, rootReducer))
 persistStore(store)
+
 export default store;
