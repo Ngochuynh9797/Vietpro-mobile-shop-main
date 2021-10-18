@@ -16,18 +16,12 @@
 	list-style:none;
 	height:30px;
 	line-height:30px;}
-
-#product-details ul li#product_promotion {
-	height: auto;
-}
 #product-details ul li span{
 	font-weight:bold;}		
 #price-number{
 	font-size:20px;
 	font-weight:bold;
-	color:#eb1f27;
-	
-}	
+	color:#eb1f27;}	
 #price, #status{
 	border-top:1px dashed #333333;
 	margin-top:10px;}
@@ -37,8 +31,7 @@
 #product-body, #comment, #comments-list{
 	margin-top:10px;}	
 #product-body h3{
-	margin-bottom:20px;}	
-	
+	margin-bottom:20px;}		
 #add-cart a:hover{
 	color:#EB1F27;
 	background:#FFF;}	

@@ -10,6 +10,7 @@ function Cart() {
     const dispatch = useDispatch()
     const [inputs, setInputs] = useState({})
     const cartItems = useSelector(state => state.cart.items)
+
     const totalPrice = cartItems.reduce((total, item) =>
         total + item.qty * item.price
         , 0)
@@ -41,7 +42,6 @@ function Cart() {
                 })
                 return
             } else {
-
                 return null
             }
         }
@@ -61,6 +61,7 @@ function Cart() {
             [name]: value
         })
     }
+
     const onClickOrder = (e) => {
         e.preventDefault();
         const items = cartItems.map((item) => ({prd_id:item._id,qty:item.qty}))
@@ -77,6 +78,7 @@ function Cart() {
             alert('Đã có lỗi xảy ra, xin vui lòng thử lại sau')
         })
     }
+
     return (
         <>
             <div id="my-cart">
@@ -105,7 +107,6 @@ function Cart() {
                         }
                         )
                     }
-
                     <div className="row">
                         <div className="cart-thumb col-lg-7 col-md-7 col-sm-12">
                             <button id="update-cart" className="btn btn-success" type="submit" name="sbm">Cập nhật giỏ hàng</button>
@@ -176,7 +177,6 @@ function Cart() {
                 </div>
             </div>
         </>
-
     )
 }
 

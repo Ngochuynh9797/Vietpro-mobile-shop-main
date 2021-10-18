@@ -3,19 +3,17 @@ import ProductItem from '../../shared/components/Product-item';
 import {getProducts} from '../../services/Api';
 
 function Home() {
-
     const [latestProduct, setLatestProduct] = useState([]);
     const [featuredProduct, setFeaturedProduct] = useState([]);
+
     useEffect(() => {
         getProducts({
             params: {
                 limit: 6     
             }
         }).then((res) => {
-            setLatestProduct(res?.data?.data?.docs);
-            
+            setLatestProduct(res?.data?.data?.docs);    
         })
-
         getProducts({
             params: {
                 limit: 6,
@@ -23,7 +21,6 @@ function Home() {
             }
         }).then((res)=> {
             setFeaturedProduct(res?.data?.data?.docs)
-           
         })
     }, [])
    
@@ -37,10 +34,8 @@ function Home() {
                             featuredProduct && featuredProduct.map((product)=> 
                             <ProductItem key={product._id} item={product} />
                            )
-                        }
-                        
+                        } 
                     </div>
-                   
                 </div>
                 {/*	End Feature Product	*/}
                 {/*	Latest Product	*/}
@@ -52,9 +47,7 @@ function Home() {
                             <ProductItem key={product._id} item={product} />
                            )
                         }
-                       
-                    </div>
-                    
+                    </div>  
                 </div>
             </div>
 

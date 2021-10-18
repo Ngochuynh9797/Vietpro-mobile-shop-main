@@ -14,7 +14,6 @@ const cartReducer = (state = initState, action) => {
             return updateCart(state, action.payload)
         case 'SYNC_CART':
             return { ...state, items: action.payload }
-      
         default:
             return state
     }
@@ -37,6 +36,7 @@ const updateCart = (state, payload) => {
     // })
     return {...state, items: newItems}
 }
+
 const addItem = (state, payload) => {
     const items = state.items;
     let isProductExists = false;
@@ -61,4 +61,5 @@ const deleteItem = (state, payload) => {
     localStorage.setItem('cart_items', JSON.stringify(newItems))
     return { ...state, items: newItems }
 }
+
 export default cartReducer
